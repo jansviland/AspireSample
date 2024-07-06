@@ -1,14 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AspireSample.Database;
+namespace AspireSample.Database.Weather;
 
-public sealed class WeatherDb
+public sealed class WeatherForecastDb
 {
     [Required]
     public int Id { get; set; }
     
     public DateTime Date { get; set; }
     public int TemperatureC { get; set; }
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    // public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
     public string? Summary { get; set; }
 }

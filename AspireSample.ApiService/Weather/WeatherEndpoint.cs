@@ -5,9 +5,8 @@ public static class WeatherEndpoint
     public static async Task<IResult> Get(IWeatherService weatherService)
     {
         var forecast = await weatherService.GetWeatherForecastAsync();
+        var response = forecast.Select(f => f.Map());
         
-        // TODO: map to response
-        
-        return Results.Ok(forecast);
+        return Results.Ok(response);
     }
 }

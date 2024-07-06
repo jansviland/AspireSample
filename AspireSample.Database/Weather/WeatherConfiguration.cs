@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AspireSample.Database.Weather;
+using Microsoft.EntityFrameworkCore;
 
 namespace AspireSample.Database;
 
@@ -6,7 +7,7 @@ public abstract class WeatherConfiguration
 {
     public static void AddConfiguration(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<WeatherDb>(entity =>
+        modelBuilder.Entity<WeatherForecastDb>(entity =>
         {
             entity.ToTable("Weather");
 

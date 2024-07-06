@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AspireSample.Database.Weather;
+using Microsoft.EntityFrameworkCore;
 
 namespace AspireSample.Database;
 
@@ -9,6 +10,6 @@ public  class WeatherContext : DbContext
         
     }
     
-    public DbSet<WeatherDb> Weather { get; set; }
+    public DbSet<WeatherForecastDb> Weather { get; set; }
     
 }

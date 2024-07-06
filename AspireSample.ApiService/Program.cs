@@ -11,13 +11,6 @@ builder.AddServiceDefaults();
 // Add services to the container.
 builder.Services.AddProblemDetails();
 
-builder.Services.AddDbContext<WeatherContext>();
-// options =>
-// {
-//     var connectionString = builder.Configuration.GetConnectionString("sqldb");
-//     options.UseSqlServer(connectionString);
-// });
-
 builder.Services.AddDbContext<WeatherContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("sqldata"), sqlOptions =>
     {
@@ -26,18 +19,18 @@ builder.Services.AddDbContext<WeatherContext>(options =>
         sqlOptions.ExecutionStrategy(c => new RetryingSqlServerRetryingExecutionStrategy(c));
     }));
 
-builder.Services.AddSingleton<IWeatherService, WeatherService>();
-builder.Services.AddSingleton<IWeatherRepository, WeatherRepository>();
+builder.Services.AddTransient<IWeatherService, WeatherService>();
+builder.Services.AddTransient<IWeatherRepository, WeatherRepository>();
 
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    using (var scope = app.Services.CreateScope())
-    {
-        var context = scope.ServiceProvider.GetRequiredService<WeatherContext>();
-        context.Database.EnsureCreated();
-    }
+    // using (var scope = app.Services.CreateScope())
+    // {
+    //     var context = scope.ServiceProvider.GetRequiredService<WeatherContext>();
+    //     context.Database.EnsureCreated();
+    // }
 }
 else
 {

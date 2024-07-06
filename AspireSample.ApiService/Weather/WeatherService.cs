@@ -1,31 +1,24 @@
-﻿namespace AspireSample.ApiService.Weather;
+﻿using AspireSample.Database.Weather;
+
+namespace AspireSample.ApiService.Weather;
 
 public interface IWeatherService
 {
-    Task<IEnumerable<WeatherForecast>> GetWeatherForecastAsync();
+    Task<IEnumerable<WeatherForecastDb>> GetWeatherForecastAsync();
 }
 
-public class WeatherService(IWeatherRepository weatherRepository) : IWeatherService
+public class WeatherService : IWeatherService
 {
-    private readonly IWeatherRepository _weatherRepository = weatherRepository;
-
-    public async Task<IEnumerable<WeatherForecast>> GetWeatherForecastAsync()
+    private readonly IWeatherRepository _weatherRepository;
+    
+    public WeatherService(IWeatherRepository weatherRepository)
     {
-        var summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild",
-            "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-        
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        
-        return forecast;
+        _weatherRepository = weatherRepository;
+    }
+
+    public async Task<IEnumerable<WeatherForecastDb>> GetWeatherForecastAsync()
+    {
+        var weatherForecastsDb = await _weatherRepository.GetWeatherForecastAsync();
+        return weatherForecastsDb;
     }
 }
