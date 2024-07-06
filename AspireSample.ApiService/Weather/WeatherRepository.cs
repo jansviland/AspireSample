@@ -1,6 +1,11 @@
 ﻿namespace AspireSample.ApiService.Weather;
 
-public class WeatherRepository
+public interface IWeatherRepository
+{
+    
+}
+
+public class WeatherRepository: IWeatherRepository
 {
     
 }
