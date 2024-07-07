@@ -12,6 +12,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspireSample.Web", "AspireS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireSample.Database", "AspireSample.Database\AspireSample.Database.csproj", "{784A7042-9B8A-49A9-85CA-F33147832E30}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireSample.Shared", "AspireSample.Shared\AspireSample.Shared.csproj", "{18EAA633-37B4-4320-8C9A-064A0933E544}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{784A7042-9B8A-49A9-85CA-F33147832E30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{784A7042-9B8A-49A9-85CA-F33147832E30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{784A7042-9B8A-49A9-85CA-F33147832E30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18EAA633-37B4-4320-8C9A-064A0933E544}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18EAA633-37B4-4320-8C9A-064A0933E544}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18EAA633-37B4-4320-8C9A-064A0933E544}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18EAA633-37B4-4320-8C9A-064A0933E544}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

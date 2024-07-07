@@ -6,7 +6,6 @@ var cache = builder
     .AddRedis("cache")
     .WithRedisCommander();
 
-// var sqlPassword = builder.AddParameter("sql-password", secret: true);
 var sql = builder.AddSqlServer("sql")
     .AddDatabase("sqldata");
 
@@ -14,7 +13,7 @@ builder.AddProject<Projects.AspireSample_Database>("migration")
     .WithReference(sql);
 
 var apiService = builder.AddProject<Projects.AspireSample_ApiService>("apiservice")
-    // .WithReference(postgres)
+    .WithReference(cache)
     .WithReference(sql)
     .WithReference(insights);
 

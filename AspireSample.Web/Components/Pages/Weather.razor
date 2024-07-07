@@ -1,6 +1,7 @@
 ﻿@page "/weather"
+@using AspireSample.Shared.Models
 @attribute [StreamRendering(true)]
-@attribute [OutputCache(Duration = 5)]
+@* @attribute [OutputCache(Duration = 5)] *@
 
 @inject WeatherApiClient WeatherApi
 

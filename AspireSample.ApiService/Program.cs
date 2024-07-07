@@ -1,9 +1,11 @@
 using AspireSample.ApiService.Weather;
 using AspireSample.Database;
 using Microsoft.EntityFrameworkCore;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.AddSqlServerDbContext<WeatherContext>("sqldata");
+builder.AddRedisClient("cache");
 
 // Add service defaults & Aspire components.
 builder.AddServiceDefaults();
@@ -20,7 +22,12 @@ builder.Services.AddDbContext<WeatherContext>(options =>
     }));
 
 builder.Services.AddTransient<IWeatherService, WeatherService>();
-builder.Services.AddTransient<IWeatherRepository, WeatherRepository>();
+builder.Services.AddTransient<WeatherDatabaseRepository>();
+
+builder.Services.AddTransient<IWeatherRepository>(x => new WeatherCachedRepository(
+    x.GetRequiredService<WeatherDatabaseRepository>(),
+    x.GetRequiredService<IConnectionMultiplexer>())
+);
 
 var app = builder.Build();
 

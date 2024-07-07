@@ -1,4 +1,5 @@
 ﻿using AspireSample.Database.Weather;
+using AspireSample.Shared.Models;
 
 namespace AspireSample.ApiService.Weather;
 

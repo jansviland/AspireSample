@@ -9,9 +9,11 @@
   <ItemGroup>
     <ProjectReference Include="..\AspireSample.Database\AspireSample.Database.csproj" />
     <ProjectReference Include="..\AspireSample.ServiceDefaults\AspireSample.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\AspireSample.Shared\AspireSample.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Aspire.StackExchange.Redis" Version="8.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
